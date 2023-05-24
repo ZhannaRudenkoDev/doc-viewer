@@ -1,0 +1,46 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "images": [
+        {
+          "path": "/assets/document-1/1.png"
+        },
+        {
+          "path": "/assets/document-1/2.png"
+        },
+        {
+          "path": "/assets/document-1/3.png"
+        },
+        {
+          "path": "/assets/document-1/4.png"
+        },
+        {
+          "path": "/assets/document-1/5.png"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "images": [
+        {
+          "path": "/assets/document-1/3.png"
+        },
+        {
+          "path": "/assets/document-1/4.png"
+        },
+        {
+          "path": "/assets/document-1/5.png"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "images": [
+        {
+          "path": "/assets/document-1/3.png"
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,14 @@ export class DocumentListComponent {
       {
         id: 1,
         title: 'First Document'
+      },
+      {
+        id: 2,
+        title: 'Second Document'
+      },
+      {
+        id: 3,
+        title: 'Third Document'
       }
     ]
 }

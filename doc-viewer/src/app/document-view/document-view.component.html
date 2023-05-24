@@ -1,1 +1,5 @@
-<p>document-view works!</p>
+<div class="document-container">
+  <div class="document-image" *ngFor="let image of documentsImages; let index">
+    <img [src]="image.path" [alt]="'image_' + index">
+  </div>
+</div>
