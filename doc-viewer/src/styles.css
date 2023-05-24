@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  margin: 0;
+}
+.container{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+@media (max-width: 1500px) {
+  .container{
+    max-width: 1200px;
+  }
+}
+@media (max-width: 1200px) {
+  .container{
+    max-width: 1024px;
+  }
+}
+@media (max-width: 1024px) {
+  .container{
+    max-width: 991px;
+  }
+}
+@media (max-width: 991px) {
+  .container{
+    max-width: 768px;
+  }
+}
+@media (max-width: 768px) {
+  .container{
+    max-width: 475px;
+  }
+}
+@media (max-width: 475px) {
+  .container{
+    max-width: 400px;
+  }
+}

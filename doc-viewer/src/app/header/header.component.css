@@ -1,0 +1,24 @@
+.header-container{
+  background-color: darkslategrey;
+}
+.container{
+  padding: 0 20px;
+}
+.header-wrapper{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo{
+  text-transform: uppercase;
+  color: white;
+}
+.zoom-wrapper{
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+.zoom-value{
+   color: white;
+}
