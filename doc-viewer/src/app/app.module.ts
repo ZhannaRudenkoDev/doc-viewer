@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { DocumentListComponent } from './document-list/document-list.component';
+import { DocumentViewComponent } from './document-view/document-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    DocumentListComponent,
+    DocumentViewComponent
   ],
   imports: [
     BrowserModule,
