@@ -1,5 +1,10 @@
 <div class="document-container">
   <div class="document-image" *ngFor="let image of documentsImages; let index">
-    <img [src]="image.path" [alt]="'image_' + index">
+    <img [src]="image.path" [alt]="'image_' + index" class="document-image-item">
   </div>
 </div>
+<ng-container *ngFor="let annotation of annotations;">
+  <div [style.left.px]="annotation.x" [style.top.px]="annotation.y" class="positioned-component">
+    <app-annotation-menu (submitDelete)="deleteAnnotation(annotation.index)"></app-annotation-menu>
+  </div>
+</ng-container>

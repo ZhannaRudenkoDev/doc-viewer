@@ -1,8 +1,6 @@
 .note-wrapper{
   position: absolute;
-  width: auto;
-  left: unset;
-  margin: 100px;
+  margin: 10px;
 }
 
 .close-wrapper{

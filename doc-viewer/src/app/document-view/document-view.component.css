@@ -6,3 +6,11 @@
   text-align: center;
   padding-bottom: 20px;
 }
+
+.positioned-component {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 9999; /* Adjust the z-index as needed */
+}

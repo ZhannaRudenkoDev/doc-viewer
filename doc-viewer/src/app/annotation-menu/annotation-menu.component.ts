@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-annotation-menu',
@@ -14,6 +14,7 @@ export class AnnotationMenuComponent {
   submittedText = ''
   isImageSubmitted = false;
   image = '';
+  @Output() submitDelete = new EventEmitter<boolean>();
 
   displayTextInput() {
     this.isMenuDisplayed = false;
@@ -26,7 +27,8 @@ export class AnnotationMenuComponent {
   }
 
   closeModal() {
-    this.isModalDisplayed = false;
+    this.submitDelete.emit(true);
+    //this.isModalDisplayed = false;
   }
 
   submitTextValue(event: string) {
@@ -40,5 +42,6 @@ export class AnnotationMenuComponent {
     this.isImageSubmitted = true;
     this.image = event;
   }
+
 
 }
