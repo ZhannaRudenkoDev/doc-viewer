@@ -1,4 +1,5 @@
-<div class="note-wrapper" *ngIf="isModalDisplayed">
+<div class="note-wrapper" *ngIf="isModalDisplayed"
+     [style.transform]="'rotate(' + rotationDegrees + 'deg)'">
   <div class="close-wrapper">
     <button class="close-icon" (click)="closeModal()">x</button>
   </div>
@@ -36,10 +37,23 @@
      (submitImageEvent)="submitImage($event)"
    ></app-image-annotation>
   </div>
-  <div class="submitted-text" *ngIf="isTextSubmitted">
+  <div class="submitted-text" *ngIf="isTextSubmitted" [style.opacity]="opacityValue">
     {{ submittedText }}
   </div>
-  <div class="submitted-image" *ngIf="isImageSubmitted">
-     <img [src]="image">
+  <div class="submitted-image" *ngIf="isImageSubmitted" [style.opacity]="opacityValue">
+     <img [src]="image" alt="submitted-image">
+  </div>
+  <div class="rotate-wrapper">
+    <button class="rotate-icon" (click)="rotate()">
+      <img src="../../assets/icons/rotating-arrow-to-the-right.png" height="16" width="16"/>
+    </button>
+  </div>
+  <div class="opacity-wrapper" *ngIf="isTextSubmitted || isImageSubmitted">
+    <button class="opacity-icon" (click)="opacityIncrease()">
+      +
+    </button>
+    <button class="opacity-icon" (click)="opacityDecrease()">
+      -
+    </button>
   </div>
 </div>

@@ -5,13 +5,13 @@
   </div>
   <div class="zoom-wrapper">
     <p class="zoom-value">{{ zoomValue }}</p>
-    <button class="zoom-button increase-zoom">
+    <button class="zoom-button" (click)="setZoomDecrease()">
+      -
+    </button>
+    <button class="zoom-button" (click)="setZoomIncrease()">
       +
     </button>
-    <button class="zoom-button decrease-zoom">
-      +
-    </button>
-    <button class="zoom-button save-zoom">
+    <button class="zoom-button save-zoom" (click)="onButtonClick()">
       save
     </button>
   </div>

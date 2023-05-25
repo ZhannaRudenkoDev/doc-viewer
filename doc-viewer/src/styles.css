@@ -35,3 +35,14 @@ body{
     max-width: 400px;
   }
 }
+
+.draggable {
+  width: 200px;
+  height: 200px;
+  cursor: move;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+

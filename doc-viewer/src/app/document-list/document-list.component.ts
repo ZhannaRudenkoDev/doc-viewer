@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DocumentListOptionModel } from "./models/document-list-option-model";
+import { documentListData } from "./document-list-data";
 
 @Component({
   selector: 'app-document-list',
@@ -7,18 +8,5 @@ import { DocumentListOptionModel } from "./models/document-list-option-model";
   styleUrls: ['./document-list.component.css']
 })
 export class DocumentListComponent {
-    documents: DocumentListOptionModel[] = [
-      {
-        id: 1,
-        title: 'First Document'
-      },
-      {
-        id: 2,
-        title: 'Second Document'
-      },
-      {
-        id: 3,
-        title: 'Third Document'
-      }
-    ]
+    documents: DocumentListOptionModel[] = documentListData;
 }

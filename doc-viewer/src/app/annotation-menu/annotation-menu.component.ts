@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-annotation-menu',
@@ -13,8 +13,11 @@ export class AnnotationMenuComponent {
   isTextSubmitted = false;
   submittedText = ''
   isImageSubmitted = false;
+  rotationDegrees = 0;
+  opacityValue = 100;
   image = '';
   @Output() submitDelete = new EventEmitter<boolean>();
+  @Output() isItemEdited = new EventEmitter<{type: string; content: string}>();
 
   displayTextInput() {
     this.isMenuDisplayed = false;
@@ -28,19 +31,33 @@ export class AnnotationMenuComponent {
 
   closeModal() {
     this.submitDelete.emit(true);
-    //this.isModalDisplayed = false;
+  }
+
+  rotate() {
+    this.rotationDegrees += 90;
   }
 
   submitTextValue(event: string) {
     this.isTextSubmitted = true;
     this.isTextInputDisplayed = false;
     this.submittedText = event;
+    this.isItemEdited.emit({type: 'text', content: this.submittedText});
   }
 
   submitImage(event: string) {
     this.isImageInputDisplayed = false;
     this.isImageSubmitted = true;
     this.image = event;
+    this.isItemEdited.emit({type: 'image', content: this.image});
+  }
+
+
+  opacityIncrease() {
+    this.opacityValue += 10;
+  }
+
+  opacityDecrease() {
+    this.opacityValue -= 10;
   }
 
 

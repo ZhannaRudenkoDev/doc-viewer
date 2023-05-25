@@ -8,8 +8,11 @@ import { DocumentViewComponent } from './document-view/document-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AnnotationMenuComponent } from './annotation-menu/annotation-menu.component';
 import { TextAnnotationComponent } from './text-annotation/text-annotation.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { ImageAnnotationComponent } from './image-annotation/image-annotation.component';
+import { DraggableDirective } from './draggable.directive';
+import { NotificationService } from "./services/notification.service";
+import { ZoomService } from "./services/zoom.service";
 
 
 @NgModule({
@@ -20,7 +23,8 @@ import { ImageAnnotationComponent } from './image-annotation/image-annotation.co
     DocumentViewComponent,
     AnnotationMenuComponent,
     TextAnnotationComponent,
-    ImageAnnotationComponent
+    ImageAnnotationComponent,
+    DraggableDirective
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { ImageAnnotationComponent } from './image-annotation/image-annotation.co
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ NotificationService, ZoomService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
