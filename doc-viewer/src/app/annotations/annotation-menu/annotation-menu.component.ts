@@ -14,7 +14,7 @@ export class AnnotationMenuComponent {
   submittedText = ''
   isImageSubmitted = false;
   rotationDegrees = 0;
-  opacityValue = 100;
+  opacityValue = 1;
   image = '';
   @Output() submitDelete = new EventEmitter<boolean>();
   @Output() isItemEdited = new EventEmitter<{type: string; content: string}>();
@@ -53,11 +53,11 @@ export class AnnotationMenuComponent {
 
 
   opacityIncrease() {
-    this.opacityValue += 10;
+    this.opacityValue += 0.1;
   }
 
   opacityDecrease() {
-    this.opacityValue -= 10;
+    this.opacityValue -= 0.1;
   }
 
 

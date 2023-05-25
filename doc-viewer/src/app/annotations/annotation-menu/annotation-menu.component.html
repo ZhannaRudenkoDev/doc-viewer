@@ -49,6 +49,7 @@
     </button>
   </div>
   <div class="opacity-wrapper" *ngIf="isTextSubmitted || isImageSubmitted">
+    <div class="opacity-value">{{opacityValue.toFixed(1)}}</div>
     <button class="opacity-icon" (click)="opacityIncrease()">
       +
     </button>

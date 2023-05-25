@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Subscription } from "rxjs";
+import {Subject, Subscription, takeUntil, tap} from "rxjs";
 import { NotificationService } from "../services/notification/notification.service";
 import { ZoomService } from "../services/zoom/zoom.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,20 @@ import { ZoomService } from "../services/zoom/zoom.service";
 export class HeaderComponent implements OnInit, OnDestroy {
   zoomValue = 100;
   private subscription!: Subscription;
-  constructor(private notificationService: NotificationService, private zoomService: ZoomService) {}
+  private isDisplayedZoomSubscription!: Subscription;
+  private destroy$ = new Subject();
+  isZoomDisplayed = false;
+  constructor(private notificationService: NotificationService,
+              private route: ActivatedRoute,
+              private zoomService: ZoomService) {}
 
   ngOnInit() {
+    this.isZoomDisplayed = this.zoomService.getIsZoomDisplayed();
     this.subscription = this.zoomService.zoomChanged.subscribe(() => {
+      this.zoomValue = this.zoomService.getZoomLevel();
+    });
+    this.isDisplayedZoomSubscription = this.zoomService.zoomDisplayChanged.subscribe(() => {
+      this.isZoomDisplayed = this.zoomService.getIsZoomDisplayed();
       this.zoomValue = this.zoomService.getZoomLevel();
     });
   }

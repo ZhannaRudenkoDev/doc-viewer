@@ -18,6 +18,7 @@
 .logo{
   text-transform: uppercase;
   color: white;
+  text-decoration: none;
 }
 .zoom-wrapper{
   display: flex;

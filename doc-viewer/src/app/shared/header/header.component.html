@@ -1,9 +1,9 @@
 <div class="header-container">
 <div class="container header-wrapper">
   <div class="logo-wrapper">
-    <p class="logo">test doc</p>
+    <a class="logo" routerLink="/">test doc</a>
   </div>
-  <div class="zoom-wrapper">
+  <div class="zoom-wrapper" *ngIf="isZoomDisplayed">
     <p class="zoom-value">{{ zoomValue }}</p>
     <button class="zoom-button" (click)="setZoomDecrease()">
       -

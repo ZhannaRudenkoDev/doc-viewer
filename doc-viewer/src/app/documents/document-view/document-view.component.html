@@ -1,14 +1,14 @@
 <div class="document-container">
   <div class="document-image"
        *ngFor="let image of documentsImages; let index">
-    <img [style.transform]="'scale(' + this.scaleValue + ')'" [src]="image.path" [alt]="'image_' + index" class="document-image-item">
+    <img [style.transform]="'scale(' + scaleValue + ')'" [src]="image.path" [alt]="'image_' + index" class="document-image-item">
   </div>
 </div>
 <ng-container *ngFor="let annotation of annotations;">
   <div [style.left.px]="annotation.x"
        [style.top.px]="annotation.y"
        appDraggable
-       [style.transform]="'scale(' + this.scaleValue + ')'"
+       [style.transform]="'scale(' + scaleValue + ')'"
        class="positioned-component">
     <app-annotation-menu
       (submitDelete)="deleteAnnotation(annotation.index)"

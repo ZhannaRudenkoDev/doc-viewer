@@ -7,10 +7,17 @@ import { Subject } from "rxjs";
 export class ZoomService {
   private zoomLevel = 100;
   private buttonClickedSource = new Subject<void>();
+  private zoomDisplayChangedSource = new Subject<void>();
+  private isZoomDisplayed = false;
   zoomChanged = this.buttonClickedSource.asObservable();
+  zoomDisplayChanged = this.zoomDisplayChangedSource.asObservable();
 
   notifyZoomClicked() {
     this.buttonClickedSource.next();
+  }
+
+  notifyDisplayZoomChangedClicked() {
+    this.zoomDisplayChangedSource.next();
   }
 
   increaseZoom(): void {
@@ -28,4 +35,18 @@ export class ZoomService {
   getZoomLevel(): number {
     return this.zoomLevel
   }
+
+  setDefaultZoomLevel() {
+   this.zoomLevel = 100;
+  }
+
+  getIsZoomDisplayed() {
+    return this.isZoomDisplayed;
+  }
+
+  setIsZoomDisplayed(flag: boolean) {
+    this.isZoomDisplayed = flag;
+  }
+
+
 }

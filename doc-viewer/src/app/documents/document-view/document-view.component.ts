@@ -44,6 +44,9 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
               private zoomService: ZoomService) {}
 
   ngOnInit() {
+    this.zoomService.setDefaultZoomLevel();
+    this.zoomService.setIsZoomDisplayed(true);
+    this.zoomService.notifyDisplayZoomChangedClicked();
     this.scaleValue = '1';
     this.route.params
       .pipe(
@@ -75,6 +78,7 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
     this.subscriptionZoom.unsubscribe();
     this.destroy$.complete();
+    this.zoomService.setIsZoomDisplayed(false);
   }
 
   addAnnotation(x: number, y: number, index: number): void {
