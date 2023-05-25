@@ -20,13 +20,12 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
   documentsImages!: DocumentImagesModel[];
   documents = documentsData.documents;
   buttonClicked!: boolean;
+  scaleValue!: number;
   annotations: DocumentAnnotationModel[] = [];
   annotationsPayload: DocumentAnnotationModel[] = [];
   result: AnnotationsModel[] = [];
-  scaleValue = '';
-  private destroy$ = new Subject();
-  private subscription!: Subscription;
-  private subscriptionZoom!: Subscription;
+  private destroy$ = new Subject<void>();
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     const clickedElement = event.target as HTMLElement;
@@ -47,7 +46,7 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
     this.zoomService.setDefaultZoomLevel();
     this.zoomService.setIsZoomDisplayed(true);
     this.zoomService.notifyDisplayZoomChangedClicked();
-    this.scaleValue = '1';
+    this.scaleValue = 100;
     this.route.params
       .pipe(
         takeUntil(this.destroy$),
@@ -62,23 +61,26 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
       )
       .subscribe();
 
-    this.subscription = this.notificationService.saveClicked$.subscribe(() => {
-      this.buttonClicked = true;
-      this.createResult();
-      console.log(JSON.stringify(this.result));
-    });
+    this.notificationService.saveClicked$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.buttonClicked = true;
+        this.createResult();
+        console.log(JSON.stringify(this.result));
+      });
 
-    this.subscriptionZoom = this.zoomService.zoomChanged.subscribe(() => {
-      this.scaleValue = this.zoomService.getZoomLevel() === 100 ? '1' : '0.' + this.zoomService.getZoomLevel();
-    });
+    this.zoomService.zoomChanged
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.scaleValue = this.zoomService.getZoomLevel();
+      });
   }
 
   ngOnDestroy(): void {
     document.removeEventListener('click', this.onDocumentClick);
-    this.subscription.unsubscribe();
-    this.subscriptionZoom.unsubscribe();
-    this.destroy$.complete();
     this.zoomService.setIsZoomDisplayed(false);
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   addAnnotation(x: number, y: number, index: number): void {

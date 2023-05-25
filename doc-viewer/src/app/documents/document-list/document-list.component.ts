@@ -8,11 +8,10 @@ import { ZoomService } from "../../shared/services/zoom/zoom.service";
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.css']
 })
-export class DocumentListComponent implements OnInit{
+export class DocumentListComponent implements OnInit {
     documents: DocumentListOptionModel[] = documentListData;
 
-    constructor(private zoomService: ZoomService) {
-    }
+    constructor(private zoomService: ZoomService) {}
 
     ngOnInit() {
       this.zoomService.setIsZoomDisplayed(false);
