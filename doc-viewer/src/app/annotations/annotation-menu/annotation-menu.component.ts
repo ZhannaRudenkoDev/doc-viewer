@@ -53,11 +53,15 @@ export class AnnotationMenuComponent {
 
 
   opacityIncrease() {
-    this.opacityValue += 0.1;
+    if (this.opacityValue < 1) {
+      this.opacityValue += 0.1;
+    }
   }
 
   opacityDecrease() {
-    this.opacityValue -= 0.1;
+    if(this.opacityValue > 0.1) {
+      this.opacityValue -= 0.1;
+    }
   }
 
 
