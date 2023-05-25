@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,6 @@ export class ZoomService {
 
   notifyZoomClicked() {
     this.buttonClickedSource.next();
-  }
-
-  getZoomLevel(): number {
-    return this.zoomLevel;
   }
 
   increaseZoom(): void {
@@ -29,7 +25,7 @@ export class ZoomService {
     }
   }
 
-  getZoomLavel(): number {
+  getZoomLevel(): number {
     return this.zoomLevel
   }
 }

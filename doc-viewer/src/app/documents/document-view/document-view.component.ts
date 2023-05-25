@@ -1,13 +1,14 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Subject, Subscription, takeUntil, tap } from "rxjs";
-import { DocumentImagesModel } from "../models/document-images.model";
-import documentsData from './../documents.json';
-import { AnnotationMenuComponent } from "../annotation-menu/annotation-menu.component";
-import { AnnotationsModel } from "../models/annotations.model";
-import { NotificationService } from "../services/notification.service";
-import { ZoomService } from "../services/zoom.service";
-import { DocumentAnnotationModel } from "../models/document-annotation.model";
+import documentsData from './../../documents.json';
+import { DocumentImagesModel } from "../../shared/models/document-images.model";
+import { DocumentAnnotationModel } from "../../shared/models/document-annotation.model";
+import { AnnotationsModel } from "../../shared/models/annotations.model";
+import { NotificationService } from "../../shared/services/notification/notification.service";
+import { ZoomService } from "../../shared/services/zoom/zoom.service";
+import { AnnotationMenuComponent } from "../../annotations/annotation-menu/annotation-menu.component";
+
 
 @Component({
   selector: 'app-document-view',
@@ -65,7 +66,7 @@ export class DocumentViewComponent implements OnInit, OnDestroy {
     });
 
     this.subscriptionZoom = this.zoomService.zoomChanged.subscribe(() => {
-      this.scaleValue = this.zoomService.getZoomLavel() === 100 ? '1' : '0.' + this.zoomService.getZoomLavel();
+      this.scaleValue = this.zoomService.getZoomLevel() === 100 ? '1' : '0.' + this.zoomService.getZoomLevel();
     });
   }
 

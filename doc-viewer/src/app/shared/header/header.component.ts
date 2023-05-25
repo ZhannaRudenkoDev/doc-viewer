@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NotificationService } from "../services/notification.service";
-import { ZoomService } from "../services/zoom.service";
+
 import { Subscription } from "rxjs";
+import { NotificationService } from "../services/notification/notification.service";
+import { ZoomService } from "../services/zoom/zoom.service";
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.zoomService.zoomChanged.subscribe(() => {
-      this.zoomValue = this.zoomService.getZoomLavel();
+      this.zoomValue = this.zoomService.getZoomLevel();
     });
   }
 
