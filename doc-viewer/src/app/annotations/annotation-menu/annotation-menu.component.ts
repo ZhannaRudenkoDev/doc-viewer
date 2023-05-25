@@ -16,6 +16,7 @@ export class AnnotationMenuComponent {
   rotationDegrees = 0;
   opacityValue = 1;
   image = '';
+
   @Output() submitDelete = new EventEmitter<boolean>();
   @Output() isItemEdited = new EventEmitter<{type: string; content: string}>();
 

@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class TextAnnotationComponent {
   inputValue = '';
+
   @Output() submitValueEvent = new EventEmitter<string>();
 
   submitValue() {
